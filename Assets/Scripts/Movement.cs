@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    Rigidbody rb;
-    AudioSource audioSource;
-
+    // PARAMETERS
     [SerializeField] float mainThrust = 100.0f;
     [SerializeField] float rotationThrust = 5.0f;
+    [SerializeField] AudioClip mainEngine;
+
+    // CACHE VARS
+    Rigidbody rb;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +36,7 @@ public class Movement : MonoBehaviour
 
             if (!audioSource.isPlaying)
             {
-                audioSource.Play();
+                audioSource.PlayOneShot(mainEngine);
             }
         }
         else
